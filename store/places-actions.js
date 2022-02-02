@@ -1,7 +1,9 @@
 import * as FileSystem from 'expo-file-system';
 
+import {GOOGLE_API_KEY} from "react-native-dotenv";
+
 import { insertPlace, fetchPlaces } from '../helpers/db';
-import ENV from '../env';
+
 
 export const ADD_PLACE = 'ADD_PLACE';
 export const SET_PLACES = 'SET_PLACES';
@@ -11,7 +13,7 @@ export const addPlace = (title, image, location) => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${
         location.lat
-      },${location.lng}&key=${ENV.googleApiKey}`
+      },${location.lng}&key=${GOOGLE_API_KEY}`
     );
 
     if (!response.ok) {
